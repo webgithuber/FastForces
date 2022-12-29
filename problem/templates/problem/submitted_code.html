@@ -1,0 +1,52 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h4>Source code for {{submitted.problem.name}}</h4>
+           <table class="table table-bordered">
+            <thead>
+              <tr>
+                
+                <th scope="col">When</th>
+                <th scope="col">Who</th>
+                <th scope="col">Problem</th>
+                <th scope="col">Lang</th>
+                <th scope="col">Verdict</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+              <tr>
+                
+                <td>{{submitted.submitted_time}}</td>
+                <td>{{submitted.user.username}}</td>
+                <td>{{submitted.problem.name}}</td>
+                <td>{{submitted.lang}}</td>
+                {% if submitted.verdict == "Accepted" %}
+                <td class="text-success " style="font-weight: bold;">{{submitted.verdict}}</td>
+                {% else %} 
+                <td>{{submitted.verdict}}</td> 
+                {% endif %}
+              </tr>
+              
+              
+              
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="form-group py-2">
+                <textarea  name="textarea" style="width: 973px;height : 470px;" disabled>{{submitted.code}}</textarea>
+             </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

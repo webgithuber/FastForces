@@ -1,0 +1,290 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <form class="mx-1 mx-md-4" action="{% url 'contest:create_contest' %}" method="POST">
+        {% csrf_token %}
+    <div class="row">
+        <div class="col-6 offset-3">
+        <h2 class="text-center">Create Contest</h2>
+            
+                <div class="d-flex flex-row align-items-center mb-3">
+                  <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <label >Contest Name</label><br>
+                    <input type="text" id="form3Example1c" class="form-control"  name="contest_name"/>
+                    
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-3">
+                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <label >Start Time</label><br>
+                    <input type="datetime-local" id="form3Example3c" class="form-control"  name="start_time"/>
+                   
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-3">
+                  <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <label >Duration</label><br>
+                    <input class="html-duration-picker"  class="form-control"  name="duration"/>
+                    
+                  </div>
+                </div>
+
+        </div>
+    </div>
+    <div class="row mt-2">
+        <h3>Problem 1</h3>
+        <div class="col-8 offset-2">
+            <div class="d-flex flex-row align-items-center mb-3">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label >Name</label><br>
+                  <input type="text" id="form3Example1c" class="form-control"  name="problem1_name"/> 
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-3">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label >Tag</label><br>
+                  <input type="text" id="form3Example1c" class="form-control"  name="problem1_tag"/>  
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-3">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label >Description</label><br>
+                  <textarea  id="form3Example1c" class="form-control"  name="problem1_desc" style="height : 100px;"></textarea>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-3">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label >Time limit</label><br>
+                  <input type="number" id="form3Example1c" class="form-control"  name="problem1_tc"/>  
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-3">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label >Memory limit</label><br>
+                  <input type="number" id="form3Example1c" class="form-control"  name="problem1_mc"/>  
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-3">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label >Example</label><br>
+                  <textarea  id="form3Example1c" class="form-control"  name="problem1_ex" style="height : 100px;"></textarea>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-3">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label >Testcases Input</label><br>
+                  <textarea  id="form3Example1c" class="form-control"  name="problem1_in" style="height : 100px;"></textarea>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-3">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label >Testcases Output</label><br>
+                  <textarea  id="form3Example1c" class="form-control"  name="problem1_out" outstyle="height : 100px;"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+      <h3>Problem 2</h3>
+      <div class="col-8 offset-2">
+          <div class="d-flex flex-row align-items-center mb-3">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <label >Name</label><br>
+                <input type="text" id="form3Example1c" class="form-control"  name="problem2_name"/> 
+              </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-3">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <label >Tag</label><br>
+                <input type="text" id="form3Example1c" class="form-control"  name="problem2_tag"/>  
+              </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-3">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <label >Description</label><br>
+                <textarea  id="form3Example1c" class="form-control"  name="problem2_desc" style="height : 100px;"></textarea>
+              </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-3">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <label >Time limit</label><br>
+                <input type="number" id="form3Example1c" class="form-control"  name="problem2_tc"/>  
+              </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-3">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <label >Memory limit</label><br>
+                <input type="number" id="form3Example1c" class="form-control"  name="problem2_mc"/>  
+              </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-3">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <label >Example</label><br>
+                <textarea  id="form3Example1c" class="form-control"  name="problem2_ex" style="height : 100px;"></textarea>
+              </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-3">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <label >Testcases Input</label><br>
+                <textarea  id="form3Example1c" class="form-control"  name="problem2_in" style="height : 100px;"></textarea>
+              </div>
+          </div>
+          <div class="d-flex flex-row align-items-center mb-3">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <label >Testcases Output</label><br>
+                <textarea  id="form3Example1c" class="form-control"  name="problem2_out" outstyle="height : 100px;"></textarea>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row mt-2">
+    <h3>Problem 3</h3>
+    <div class="col-8 offset-2">
+        <div class="d-flex flex-row align-items-center mb-3">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <label >Name</label><br>
+              <input type="text" id="form3Example1c" class="form-control"  name="problem3_name"/> 
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-3">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <label >Tag</label><br>
+              <input type="text" id="form3Example1c" class="form-control"  name="problem3_tag"/>  
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-3">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <label >Description</label><br>
+              <textarea  id="form3Example1c" class="form-control"  name="problem3_desc" style="height : 100px;"></textarea>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-3">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <label >Time limit</label><br>
+              <input type="number" id="form3Example1c" class="form-control"  name="problem3_tc"/>  
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-3">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <label >Memory limit</label><br>
+              <input type="number" id="form3Example1c" class="form-control"  name="problem3_mc"/>  
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-3">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <label >Example</label><br>
+              <textarea  id="form3Example1c" class="form-control"  name="problem3_ex" style="height : 100px;"></textarea>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-3">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <label >Testcases Input</label><br>
+              <textarea  id="form3Example1c" class="form-control"  name="problem3_in" style="height : 100px;"></textarea>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-3">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <label >Testcases Output</label><br>
+              <textarea  id="form3Example1c" class="form-control"  name="problem3_out" outstyle="height : 100px;"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-2">
+  <h3>Problem 4</h3>
+  <div class="col-8 offset-2">
+      <div class="d-flex flex-row align-items-center mb-3">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <label >Name</label><br>
+            <input type="text" id="form3Example1c" class="form-control"  name="problem4_name"/> 
+          </div>
+      </div>
+      <div class="d-flex flex-row align-items-center mb-3">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <label >Tag</label><br>
+            <input type="text" id="form3Example1c" class="form-control"  name="problem4_tag"/>  
+          </div>
+      </div>
+      <div class="d-flex flex-row align-items-center mb-3">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <label >Description</label><br>
+            <textarea  id="form3Example1c" class="form-control"  name="problem4_desc" style="height : 100px;"></textarea>
+          </div>
+      </div>
+      <div class="d-flex flex-row align-items-center mb-3">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <label >Time limit</label><br>
+            <input type="number" id="form3Example1c" class="form-control"  name="problem4_tc"/>  
+          </div>
+      </div>
+      <div class="d-flex flex-row align-items-center mb-3">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <label >Memory limit</label><br>
+            <input type="number" id="form3Example1c" class="form-control"  name="problem4_mc"/>  
+          </div>
+      </div>
+      <div class="d-flex flex-row align-items-center mb-3">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <label >Example</label><br>
+            <textarea  id="form3Example1c" class="form-control"  name="problem4_ex" style="height : 100px;"></textarea>
+          </div>
+      </div>
+      <div class="d-flex flex-row align-items-center mb-3">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <label >Testcases Input</label><br>
+            <textarea  id="form3Example1c" class="form-control"  name="problem4_in" style="height : 100px;"></textarea>
+          </div>
+      </div>
+      <div class="d-flex flex-row align-items-center mb-3">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <label >Testcases Output</label><br>
+            <textarea  id="form3Example1c" class="form-control"  name="problem4_out" outstyle="height : 100px;"></textarea>
+          </div>
+      </div>
+  </div>
+</div>
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+        <button type="submit" class="btn btn-primary btn-lg">Save</button>
+      </div>
+</form>
+</div>
+
+{% endblock %}

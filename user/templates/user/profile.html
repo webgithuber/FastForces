@@ -1,0 +1,30 @@
+
+{% extends "user/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <a href="{% url 'user_submission' user.username %}" style="display: inline;text-decoration: none;font-weight:bold" class="col-8 offset-2 mt-3 " >Submissions</a>
+        
+        <div class="col-8 offset-2 border border-dark mt-2">
+            <div class="row">
+                <div class="col-7 p-2">
+                    <h3>{{user.username}}</h3>
+                    <h5><span>Score:{{user.userdetail.score}}</span></h5>
+                    <h5><span>Solved: {{user.userdetail.problems_solved}}</span></h5>
+                    <h5><span>Registered:{{user.date_joined}}</span></h5>
+                </div>
+                <div class="col-5">
+                 <div  class="bg-secondary m-2"style="height:200px ;">
+                    <img src="{% static 'profile.png' %}" alt="" >
+                 </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

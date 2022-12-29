@@ -1,0 +1,50 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+           <h4> Submissions from {{user_name}}</h4>
+           <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">When</th>
+                <th scope="col">Who</th>
+                <th scope="col">Problem</th>
+                <th scope="col">Lang</th>
+                <th scope="col">Verdict</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for submission in submissions %}
+              
+              <tr>
+                <td><a href="{% url 'problem:submitted_code' submission.pk  %}"> {{submission.pk}} </a></td>
+                <td>{{submission.submitted_time}}</td>
+                <td>{{submission.user.username}}</td>
+                <td>{{submission.problem.name}}</td>
+                <td>{{submission.lang}}</td>
+                {% if submission.verdict == "Accepted" %}
+                <td class="text-success " style="font-weight: bold;">{{submission.verdict}}</td> 
+                {% elif submission.verdict ==  "Wrong answer" %}
+                <td class="text-primary">{{submission.verdict}}</td> 
+                {% else %}
+                <td>{{submission.verdict}}</td>
+                {% endif %} 
+
+              </tr>
+              
+              {% endfor %}
+              
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      {{ message }}
+  </div>
+</div>
+{% endfor %}
+
+
+
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Tag</th>
+            <th scope="col">Submission</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for problem in problems %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="{% url 'problem:problem' problem.pk %}">{{problem.name}}</a></td>
+            
+            {% if problem.tag == "A" %}
+            <td>Easy</td>
+            {% elif problem.tag == "B" %}
+            <td>Medium</td>
+            {% elif problem.tag == "C" %}
+            <td>Medium</td>
+            {% else %}
+            <td>Hard</td>
+            {% endif %}
+            <td>{{problem.total_submission}}</td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h4>Upcoming Contest</h4>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Register</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for contest in contests %}
+                  {% if contest.end_time > today   %}
+                  <tr>
+                    <td>{{contest.name}}</td>
+                    <td>{{contest.start_time}}</td>
+                    <td>{{contest.duration}}</td>
+                    <td>
+                        {% if contest.start_time < today %}
+                        <a href="{% url 'contest:enter_contest' contest.pk %}" style="color: red;" >Live</a>
+                        {% elif contest.pk in registered_ids  %}
+                        <a href="#" style="color: green;">Registered </a>
+                        {% else  %}
+                        <a href="{% url 'contest:register_contest' contest.pk %}">Register</a>
+                        {% endif %}
+                    </td>
+                    
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                  
+                </tbody>
+            </table>
+        </div>
+    </div>
+   
+    <div class="row mt-2">
+        <div class="col-8">
+            <h4>Previous Contest</h4>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Standing</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for contest in contests %}
+                  {% if contest.end_time < today   %}
+                  <tr>
+                    <td><a href="{% url 'contest:enter_contest2' contest.pk %}">{{contest.name}}</a></td>
+                    <td>{{contest.start_time}}</td>
+                    <td> {{contest.duration}} </td>
+                    <td><a href="{% url 'contest:contest_standing' contest.pk %}">Standing</a></td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

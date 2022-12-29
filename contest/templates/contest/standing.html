@@ -1,0 +1,48 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+           <h4>Standing for {{contest.name}}</h4>
+           <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">username</th>
+                <th scope="col">Score</th>
+                <th scope="col">Problem A</th>
+                <th scope="col">Problem B</th>
+                <th scope="col">Problem C</th>
+                <th scope="col">Problem D</th>
+                
+
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for register in registers %}
+              
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{% url 'profile' register.user.username %}">{{register.user.username}} </a></td>
+                <td>{{register.total_score}}</td>
+                <td>{{register.a_score}}</td>
+                <td>{{register.b_score}}</td>
+                <td>{{register.c_score}}</td> 
+                <td>{{register.d_score}}</td> 
+
+              </tr>
+              
+              {% endfor %}
+              
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

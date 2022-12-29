@@ -1,0 +1,30 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Name</th>
+        <th scope="col">Score</th>
+        <th scope="col">Solved Problems</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for item in user %}
+        
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href="{% url 'profile' item.user.username %}">{{ item.user.username }} </a></td>
+            <td>{{ item.score }}</td>
+            <td>{{ item.problems_solved }}</td>
+          </tr>
+        
+        {% endfor %}
+     
+    </tbody>
+  </table>
+
+
+{% endblock %}
