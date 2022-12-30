@@ -21,8 +21,8 @@ class CodeCheck():
         self.code = code
         self.lang=lang
         self.stderr = None
-        file_in = open("D:\Python\FastForces\static\code\input.txt","w")
-        correct_out = open("D:\Python\FastForces\static\code\correct_out.txt","w")
+        file_in = open("\home\ubuntu\project2\FastForces\static\code\input.txt","w")
+        correct_out = open("\home\ubuntu\project2\FastForces\static\code\correct_out.txt","w")
         
         for element in TestCase.input:
             element = element.strip('\n')
@@ -36,20 +36,20 @@ class CodeCheck():
 
     def run_cpp(self):
 
-        file_out = open("D:\Python\FastForces\static\code\output.txt","w")
-        file_in = open("D:\Python\FastForces\static\code\input.txt", "r")
-        code_file = open("D:\Python\FastForces\static\code\code.cpp", "w")
+        file_out = open("\home\ubuntu\project2\FastForces\static\code\output.txt","w")
+        file_in = open("\home\ubuntu\project2\FastForces\static\code\input.txt", "r")
+        code_file = open("\home\ubuntu\project2\FastForces\static\code\code.cpp", "w")
         code_file.write(self.code)
         code_file.close()
         
-        subprocess.run(["g++", "D:\Python\FastForces\static\code\code.cpp","-o", "output"],shell=True)
+        subprocess.run(["g++", "\home\ubuntu\project2\FastForces\static\code\code.cpp","-o", "output"],shell=True)
         subprocess.run([".\output.exe"], stdin=file_in, stdout=file_out,shell=True)
         
         file_out.close()
         file_in.close()
 
-        file_out = open("D:\Python\FastForces\static\code\output.txt", "r")
-        correct_out = open("D:\Python\FastForces\static\code\correct_out.txt", "r")
+        file_out = open("\home\ubuntu\project2\FastForces\static\code\output.txt", "r")
+        correct_out = open("\home\ubuntu\project2\FastForces\static\code\correct_out.txt", "r")
         
         out = file_out.read()
         correct_out = correct_out.read()
@@ -58,18 +58,18 @@ class CodeCheck():
         return match(out,correct_out)
 
     def run_python(self):
-        file_out = open("D:\Python\FastForces\static\code\output.txt","w")
-        file_in = open("D:\Python\FastForces\static\code\input.txt", "r")
-        code_file = open("D:\Python\FastForces\static\code\code.py", "w")
+        file_out = open("\home\ubuntu\project2\FastForces\static\code\output.txt","w")
+        file_in = open("\home\ubuntu\project2\FastForces\static\code\input.txt", "r")
+        code_file = open("\home\ubuntu\project2\FastForces\static\code\code.py", "w")
         code_file.write(self.code)
         code_file.close()
         
-        subprocess.run(["python" , "D:\Python\FastForces\static\code\code.py"], stdin=file_in, stdout=file_out, shell=True)
+        subprocess.run(["python" , "\home\ubuntu\project2\FastForces\static\code\code.py"], stdin=file_in, stdout=file_out, shell=True)
         file_out.close()
         file_in.close()
 
-        file_out = open("D:\Python\FastForces\static\code\output.txt", "r")
-        correct_out = open("D:\Python\FastForces\static\code\correct_out.txt", "r")
+        file_out = open("\home\ubuntu\project2\FastForces\static\code\output.txt", "r")
+        correct_out = open("\home\ubuntu\project2\FastForces\static\code\correct_out.txt", "r")
         
         out = file_out.read()
         correct_out = correct_out.read()
@@ -77,19 +77,19 @@ class CodeCheck():
 
         return match(out,correct_out)
     def run_java(self):
-        file_out = open("D:\Python\FastForces\static\code\output.txt","w")
-        file_in = open("D:\Python\FastForces\static\code\input.txt", "r")
-        code_file = open("D:\Python\FastForces\static\code\code.java", "w")
+        file_out = open("\home\ubuntu\project2\FastForces\static\code\output.txt","w")
+        file_in = open("\home\ubuntu\project2\FastForces\static\code\input.txt", "r")
+        code_file = open("\home\ubuntu\project2\FastForces\static\code\code.java", "w")
         code_file.write(self.code)
         code_file.close()
 
-        subprocess.run(["javac" , "D:\Python\FastForces\static\code\Code.java"], shell=True)
-        subprocess.run(["java" , "D:\Python\FastForces\static\code\Code"], stdin=file_in, stdout=file_out, shell=True)
+        subprocess.run(["javac" , "\home\ubuntu\project2\FastForces\static\code\Code.java"], shell=True)
+        subprocess.run(["java" , "\home\ubuntu\project2\FastForces\static\code\Code"], stdin=file_in, stdout=file_out, shell=True)
         file_out.close()
         file_in.close()
 
-        file_out = open("D:\Python\FastForces\static\code\output.txt", "r")
-        correct_out = open("D:\Python\FastForces\static\code\correct_out.txt", "r")
+        file_out = open("\home\ubuntu\project2\FastForces\static\code\output.txt", "r")
+        correct_out = open("\home\ubuntu\project2\FastForces\static\code\correct_out.txt", "r")
         
         out = file_out.read()
         correct_out = correct_out.read()
