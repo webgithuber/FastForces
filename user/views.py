@@ -46,10 +46,6 @@ def login_request(request):
             print(user)
             if user is not None:
                 login(request, user)
-                user_obj=UserDetail.objects.filter(user=User.objects.get(username=username))
-                obj=UserDetail.objects.get(user=User.objects.get(username=username))
-                user_obj.update(score=1+obj.score)
-                print("testing...",UserDetail.objects.get(user=User.objects.get(username=username)).score)
                 messages.info(request, f"You are now logged in as {username}.")
                 return redirect("home")
             else:

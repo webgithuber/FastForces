@@ -5,6 +5,8 @@ def match(out,correct_out):
     verdict=""
     if len(correct_out)<len(out):
         correct_out+="\n"
+    if len(out)<len(correct_out):
+        out+="\n"
     print(len(correct_out))
     print(len(out))
     if correct_out==(out):   
