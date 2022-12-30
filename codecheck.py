@@ -43,9 +43,18 @@ class CodeCheck():
         code_file = open("/home/ubuntu/project2/FastForces/static/code/code.cpp", "w")
         code_file.write(self.code)
         code_file.close()
+
+        make_container=subprocess.run('docker run -d gcc tail -f /dev/null',capture_output=True)
+        container_id=make_container.stdout.decode()[:-1]
+        subprocess.run(f'docker cp /home/ubuntu/project2/FastForces/static/code/code.cpp {container_id}:/code.cpp')
+        subprocess.run(f'docker exec {container_id} g++ code.cpp -o out',stderr=subprocess.PIPE)
+        subprocess.run(f'docker cp /home/ubuntu/project2/FastForces/static/code/input.txt {container_id}:/input.txt')
+        subprocess.run(f'docker exec -it {container_id} sh -c "./out <input.txt> useroutput.txt"')
+        subprocess.run(f'docker cp {container_id}:/useroutput.txt /home/ubuntu/project2/FastForces/static/code/output.txt')
         
-        subprocess.run(["g++", "/home/ubuntu/project2/FastForces/static/code/code.cpp","-o", "output"],shell=True)
-        subprocess.run(["./output.exe"], stdin=file_in, stdout=file_out,shell=True)
+        subprocess.run(f'docker rm -f {container_id}')
+        #subprocess.run(["g++", "/home/ubuntu/project2/FastForces/static/code/code.cpp","-o", "output"],shell=True)
+        #subprocess.run(["./output.exe"], stdin=file_in, stdout=file_out,shell=True)
         
         file_out.close()
         file_in.close()
