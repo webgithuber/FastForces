@@ -42,8 +42,8 @@ class CodeCheck():
         code_file.write(self.code)
         code_file.close()
         
-        subprocess.run(["run","g++", "D:\Python\FastForces\static\code\code.cpp","-o", "output"],shell=True)
-        subprocess.run(["run", ".\output.exe"], stdin=file_in, stdout=file_out,shell=True)
+        subprocess.run(["g++", "D:\Python\FastForces\static\code\code.cpp","-o", "output"],shell=True)
+        subprocess.run([".\output.exe"], stdin=file_in, stdout=file_out,shell=True)
         
         file_out.close()
         file_in.close()
@@ -64,7 +64,7 @@ class CodeCheck():
         code_file.write(self.code)
         code_file.close()
         
-        subprocess.run(["run", "python" , "D:\Python\FastForces\static\code\code.py"], stdin=file_in, stdout=file_out, shell=True)
+        subprocess.run(["python" , "D:\Python\FastForces\static\code\code.py"], stdin=file_in, stdout=file_out, shell=True)
         file_out.close()
         file_in.close()
 
